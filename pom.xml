@@ -1,25 +1,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <parent>
+        <groupId>org.forgerock</groupId>
+        <artifactId>forgerock-parent</artifactId>
+        <version>2.0.7</version>
+    </parent>
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nl.arietimmerman</groupId>
 	<artifactId>openam-u2f</artifactId>
 	<version>0.7</version>
 
 	<properties>
-		<openam.version>13.0.0</openam.version>
+		<openam.version>13.5.0</openam.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>forgerock-releases</id>
-			<url>http://maven.forgerock.org/repo/releases</url>
-		</repository>
-		<repository>
-			<id>forgerock-snapshots</id>
-			<url>http://maven.forgerock.org/repo/snapshots</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <!-- Needed to retrieve parent POM -->
+        <repository>
+            <id>wrensecurity-releases</id>
+            <name>Wren Security Release Repository</name>
+            <url>https://wrensecurity.jfrog.io/wrensecurity/releases</url>
+
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
 
 	<dependencies>
 		<dependency>
@@ -75,15 +87,6 @@
 		</resources>
 
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
